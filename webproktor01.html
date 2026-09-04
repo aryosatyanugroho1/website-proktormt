@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proktor Media Teknologi</title>
+
+    <!-- Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        /* ===== RESET & GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fc;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            background: #0b1a2e;
+            color: white;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .logo-wrapper img {
+            height: 40px;
+            width: auto;
+            border-radius: 6px;
+            transition: transform 0.3s;
+            object-fit: contain;
+        }
+
+        .logo-wrapper img:hover {
+            transform: scale(1.08);
+        }
+
+        .logo-separator {
+            color: rgba(255,255,255,0.2);
+            font-size: 24px;
+            font-weight: 100;
+            margin: 0 2px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-left: 4px;
+        }
+
+        .logo-text span {
+            color: #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            font-weight: 500;
+        }
+
+        .nav-links a {
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #0b1a2e 0%, #1a3a5e 100%);
+            color: white;
+            padding: 80px 0 70px;
+            text-align: center;
+        }
+
+        .hero-logo {
+            margin-bottom: 25px;
+        }
+
+        .hero-logo img {
+            height: 100px;
+            width: auto;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.25);
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            transition: transform 0.4s;
+        }
+
+        .hero-logo img:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 span {
+            color: #00d4ff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: #00d4ff;
+            color: #0b1a2e;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 18px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #00b8e6;
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid #00d4ff;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: #00d4ff;
+            color: #0b1a2e;
+        }
+
+        /* ===== TENTANG KAMI ===== */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: #0b1a2e;
+            border-bottom: 4px solid #00d4ff;
+            padding-bottom: 8px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 50px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 17px;
+            margin-bottom: 18px;
+            color: #2d3f55;
+        }
+
+        .about-text strong {
+            color: #0b1a2e;
+        }
+
+        .about-image {
+            background: linear-gradient(145deg, #0b1a2e, #1a3a5e);
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .about-image i {
+            font-size: 70px;
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+
+        .about-image h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .about-image p {
+            opacity: 0.8;
+            font-size: 16px;
+        }
+
+        /* ===== VISI & MISI ===== */
+        .visi-misi {
+            background: #f0f4fa;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .vm-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            border-left: 6px solid #00d4ff;
+        }
+
+        .vm-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .vm-card i {
+            font-size: 40px;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .vm-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #0b1a2e;
+        }
+
+        .vm-card p {
+            color: #444;
+            font-size: 16px;
+        }
+
+        /* ===== LAYANAN ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            border-bottom-color: #00d4ff;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 48px;
+            color: #00d4ff;
+            margin-bottom: 18px;
+        }
+
+        .service-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #0b1a2e;
+        }
+
+        .service-card p {
+            color: #555;
+            font-size: 15px;
+        }
+
+        /* ===== TIM ===== */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 35px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+        }
+
+        .team-card .avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #0b1a2e, #1a3a5e);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            font-weight: 700;
+            border: 3px solid #00d4ff;
+        }
+
+        .team-card .avatar.leader {
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .team-card h4 {
+            font-size: 18px;
+            color: #0b1a2e;
+            margin-bottom: 0;
+        }
+
+        .team-card .role {
+            font-size: 13px;
+            color: #00d4ff;
+            font-weight: 600;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+
+        .team-card .role.leader-role {
+            color: #ffd700;
+        }
+
+        /* ===== KONTAK ===== */
+        .contact-section {
+            background: #0b1a2e;
+            color: white;
+        }
+
+        .contact-section .section-title span {
+            color: white;
+            border-bottom-color: #00d4ff;
+        }
+
+        .contact-section .section-subtitle {
+            color: #aac;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 14px;
+            font-size: 17px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .contact-info i {
+            width: 30px;
+            color: #00d4ff;
+        }
+
+        .contact-info .address-text {
+            display: inline;
+        }
+
+        .social-icons {
+            margin-top: 25px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 18px;
+            font-size: 28px;
+            color: #ccc;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #00d4ff;
+            transform: translateY(-4px);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            background: #1e3349;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #99b0cc;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            background: #2a405a;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-form textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            background: #00d4ff;
+            color: #0b1a2e;
+            font-weight: 700;
+        }
+
+        .contact-form .btn:hover {
+            background: #00b8e6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #05101e;
+            color: #88a0bb;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 15px;
+            border-top: 1px solid #1a3350;
+        }
+
+        footer span {
+            color: #00d4ff;
+        }
+
+        /* ===== RESPONSIF ===== */
+        @media (max-width: 992px) {
+            .about-grid,
+            .vm-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-logo img {
+                height: 75px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                gap: 16px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .hero {
+                padding: 50px 0 40px;
+            }
+
+            .hero-logo img {
+                height: 60px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+
+            .logo-wrapper img {
+                height: 30px;
+            }
+
+            .logo-text {
+                font-size: 16px;
+            }
+
+            .logo-separator {
+                font-size: 18px;
+                margin: 0 1px;
+            }
+
+            .logo-wrapper {
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <div class="container">
+            <div class="logo-wrapper">
+                <!-- LOGO PROKTOR -->
+                <img src="https://i.postimg.cc/4HzYtwL5/logo-proktor.png" alt="Logo Proktor" />
+                <!-- LOGO SEKOLAH (MT NEW) -->
+                <img src="https://i.postimg.cc/50BxdYLf/LOGO-MT-NEW.png" alt="Logo Sekolah MT" />
+                <!-- LOGO JURUSAN (DKV) -->
+                <img src="https://i.postimg.cc/1tHLrpDv/LOGO-DKV.png" alt="Logo Jurusan DKV" />
+                <span class="logo-separator">|</span>
+                <div class="logo-text">PROKTOR<span>MT</span></div>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#visi-misi">Visi & Misi</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#tim">Tim</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-logo">
+                <img src="https://i.postimg.cc/4HzYtwL5/logo-proktor.png" alt="Logo Proktor Media Teknologi" />
+            </div>
+            <h1>PROKTOR <span>MEDIA</span> <br />TEKNOLOGI</h1>
+            <p>
+                Wadah kreativitas siswa di bidang teknologi dan media digital.
+                Bersama kita berkreasi, berinovasi, dan menginspirasi.
+            </p>
+            <div>
+                <a href="#tentang" class="btn">Jelajahi</a>
+                <a href="#kontak" class="btn btn-outline">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TENTANG KAMI ===== -->
+    <section class="section" id="tentang">
+        <div class="container">
+            <div class="section-title"><span>Tentang Kami</span></div>
+            <div class="section-subtitle">Mengenal lebih dekat PROKTOR MEDIA TEKNOLOGI</div>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        <strong>PROKTOR MEDIA TEKNOLOGI</strong> adalah organisasi siswa yang bergerak di bidang 
+                        pengembangan teknologi, media, dan kreativitas digital. Didirikan pada tahun <strong>2017</strong>, 
+                        organisasi ini menjadi wadah bagi siswa-siswi untuk belajar, berkreasi, dan berinovasi 
+                        dalam dunia teknologi dan media.
+                    </p>
+                    <p>
+                        Kami percaya bahwa setiap siswa memiliki potensi untuk menciptakan karya digital yang 
+                        bermanfaat. Melalui berbagai kegiatan, pelatihan, dan proyek kolaboratif, PROKTOR MT 
+                        berkomitmen untuk mencetak generasi muda yang melek teknologi, kreatif, dan siap 
+                        menghadapi tantangan masa depan.
+                    </p>
+                    <p>
+                        <strong>#ProktorMT #TeknologiSekolah #KreatifDigital</strong>
+                    </p>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Wadah Kreativitas Siswa</h3>
+                    <p>PROKTOR MT adalah rumah bagi siswa yang ingin belajar dan berkarya di bidang teknologi & media.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== VISI & MISI ===== -->
+    <section class="section visi-misi" id="visi-misi">
+        <div class="container">
+            <div class="section-title"><span>Visi & Misi</span></div>
+            <div class="section-subtitle">Arah dan tujuan organisasi kami</div>
+
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Visi</h3>
+                    <p>
+                        Menjadi organisasi siswa terdepan yang menginspirasi dan memberdayakan 
+                        generasi muda di bidang teknologi, media, dan kreativitas digital 
+                        untuk menciptakan karya yang bermanfaat bagi sekolah dan masyarakat.
+                    </p>
+                </div>
+                <div class="vm-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Misi</h3>
+                    <p>
+                        <strong>1.</strong> Mengembangkan minat dan bakat siswa di bidang teknologi dan media.<br />
+                        <strong>2.</strong> Mendorong kolaborasi dan kerja sama antar siswa dalam proyek kreatif.<br />
+                        <strong>3.</strong> Menyelenggarakan pelatihan dan workshop untuk meningkatkan kompetensi digital.<br />
+                        <strong>4.</strong> Menghasilkan karya digital yang bermanfaat untuk lingkungan sekolah.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LAYANAN ===== -->
+    <section class="section" id="layanan">
+        <div class="container">
+            <div class="section-title"><span>Layanan Kami</span></div>
+            <div class="section-subtitle">Fasilitas dan kegiatan yang tersedia untuk siswa DKV</div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-desktop"></i>
+                    <h4>Laboratorium Komputer</h4>
+                    <p>Menyediakan akses PC dan komputer canggih untuk mendukung kegiatan belajar, desain, dan produksi digital siswa.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-camera-retro"></i>
+                    <h4>Peminjaman Alat Elektronik</h4>
+                    <p>Siswa dapat meminjam berbagai perangkat seperti kamera, microphone, lighting, dan alat pendukung lainnya dengan syarat yang telah ditentukan.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-microchip"></i>
+                    <h4>Praktik Produksi Digital</h4>
+                    <p>Sesi praktik langsung menggunakan perangkat elektronik untuk mendukung pembelajaran di bidang fotografi, videografi, dan audio.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-camera"></i>
+                    <h4>Pelatihan Fotografi</h4>
+                    <p>Belajar teknik fotografi dasar hingga lanjutan, mulai dari komposisi, pencahayaan, hingga pengolahan hasil foto secara digital.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-podcast"></i>
+                    <h4>Produksi Podcast</h4>
+                    <p>Wadah kreatif bagi siswa untuk belajar membuat konten audio, mulai dari perencanaan, rekaman, editing, hingga publikasi.</p>
+                </div>
+
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Pengenalan Software & Hardware</h4>
+                    <p>Mempelajari komponen komputer, sistem operasi, serta berbagai software desain dan editing yang mendukung karya digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TIM ===== -->
+    <section class="section" style="background: #f0f4fa;" id="tim">
+        <div class="container">
+            <div class="section-title"><span>Tim Kami</span></div>
+            <div class="section-subtitle">Orang-orang hebat di balik PROKTOR MEDIA TEKNOLOGI</div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="avatar leader">W</div>
+                    <h4>WILIANDRI</h4>
+                    <div class="role leader-role">✦ KEPALA PROGRAM</div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">AP</div>
+                    <h4>ANDHIKA PRATAMA</h4>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">DR</div>
+                    <h4>DHAFA RAMADHAN</h4>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">A</div>
+                    <h4>AMRULLAH</h4>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">AS</div>
+                    <h4>ARYO SATYA</h4>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">MA</div>
+                    <h4>MIKAIL AKHDAN</h4>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">N</div>
+                    <h4>NIKESYA</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== KONTAK ===== -->
+    <section class="section contact-section" id="kontak">
+        <div class="container">
+            <div class="section-title"><span>Hubungi Kami</span></div>
+            <div class="section-subtitle">Siap berkolaborasi? Kirim pesan Anda!</div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="address-text">
+                            Jl. Jambu Kel No. 10, RT.02/RW.08, Pabuaran,<br />
+                            Kecamatan Bojonggede, Kabupaten Bogor,<br />
+                            Jawa Barat 16922
+                        </span>
+                    </p>
+                    <p><i class="fas fa-phone"></i> +62 8953-2781-9593</p>
+                    <p><i class="fas fa-envelope"></i> proktormt@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Senin – Jumat, 07.00 – 15.30 WIB</p>
+
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/proktormt24/?utm_source=ig_web_button_share_sheet" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@Smkmediatek" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <input type="text" placeholder="Nama Lengkap" required />
+                    <input type="email" placeholder="Alamat Email" required />
+                    <input type="text" placeholder="Subjek" />
+                    <textarea placeholder="Tulis pesan Anda..." required></textarea>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            &copy; 2026 <span>PROKTOR MEDIA TEKNOLOGI</span> — Wadah Kreativitas Siswa.
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera merespons.');
+            this.reset();
+        });
+    </script>
+
+</body>
+</html>
